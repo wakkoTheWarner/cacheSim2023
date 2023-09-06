@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class cacheSimDEMO {
+public class cacheSimDemo {
     private static int timeCache = 5;
     private static int timeMain = 50;
     private static int[] cacheArray = new int[4];
