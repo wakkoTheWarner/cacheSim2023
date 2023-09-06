@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class processor {
     private final cacheMemory cache;
     private final mainMemory primaryMemory;
@@ -24,15 +22,14 @@ public class processor {
             result = "Hit";
             timeAccumulator += cache.getAccessTime();
             systemStatus = "No sustitución";
-            cache.updateStatus(pageRequest);
+            // cache.updateStatus(pageRequest);
         } else {
             result = "Miss";
             timeAccumulator += cache.getAccessTime();
             int pageData = primaryMemory.fetchPage(pageRequest);
             timeAccumulator += primaryMemory.getAccessTime();
-            systemStatus = "Escribir en página " + String.format("%02d",cache.getCounter());
-
             cache.storePage(pageData);
+            systemStatus = "Escribir en página " + String.format("%02d",cache.getCacheLocation());
         }
 
         displaySystemState(pageRequest);
@@ -55,5 +52,28 @@ public class processor {
         System.out.printf("%-" + width + "s: %s%n", "Resultado", result);
         System.out.printf("%-" + width + "s: %s%n", "Tiempo transcurrido", String.format("%04d", timeAccumulator) + " nano segundos");
         System.out.printf("%-" + width + "s: %s%n", "Status del sistema", systemStatus);
+
+        /*
+            Output pt2
+        System.out.println("           cache      main ");
+        System.out.println("-------     -----     -----");
+        System.out.println("|     |   00|  *|   00|   |");
+        System.out.println("|Micro|---01|   |---01|   |");
+        System.out.println("|     |   02|   |   02|   |");
+        System.out.println("-------   03|   |   03|   |");
+        System.out.println("            -----   04|   |");
+        System.out.println("                    05|   |");
+        System.out.println("                    06|   |");
+        System.out.println("                    07|   |");
+        System.out.println("                    08|   |");
+        System.out.println("                    09|   |");
+        System.out.println("                    10|   |");
+        System.out.println("                    11|   |");
+        System.out.println("                    12|   |");
+        System.out.println("                    13|   |");
+        System.out.println("                    14|   |");
+        System.out.println("                    15|   |");
+        System.out.println("                      -----");
+         */
     }
 }

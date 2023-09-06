@@ -1,11 +1,8 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class cacheMemory {
     int accessTime;
     String replacementAlgorithm;
     int[] pages = new int[4];
-    int counter;
+    int cacheLocation;
 
     public void setAccessTime(int accessTime) {
         this.accessTime = accessTime;
@@ -32,8 +29,8 @@ public class cacheMemory {
         return replacementAlgorithm;
     }
 
-    public int getCounter() {
-        return counter;
+    public int getCacheLocation() {
+        return cacheLocation;
     }
 
     public void updateStatus(int pageRequest) {
@@ -43,6 +40,7 @@ public class cacheMemory {
     public void storePage(int pageData) {
         switch(replacementAlgorithm) {
             case "Round Robin":
+            case "FIFO":
                 useRoundRobin(pageData);
                 break;
             case "Last Recently Used":
@@ -52,10 +50,10 @@ public class cacheMemory {
     }
 
     public void useRoundRobin(int pageData) {
-        if (counter == 4) {
-            counter = 0;
+        if (cacheLocation == 4) {
+            cacheLocation = 0;
         }
-        pages[counter] = pageData;
-        counter++;
+        pages[cacheLocation] = pageData;
+        cacheLocation++;
     }
 }
