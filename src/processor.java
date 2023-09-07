@@ -54,10 +54,9 @@ public class processor {
         System.out.printf("%-" + width + "s: %s%n", "Status del sistema", systemStatus);
 
         /*
-            Output pt2
         System.out.println("           cache      main ");
         System.out.println("-------     -----     -----");
-        System.out.println("|     |   00|  *|   00|   |");
+        System.out.println("|     |   00|   |   00|   |");
         System.out.println("|Micro|---01|   |---01|   |");
         System.out.println("|     |   02|   |   02|   |");
         System.out.println("-------   03|   |   03|   |");

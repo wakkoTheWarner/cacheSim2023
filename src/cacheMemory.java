@@ -30,7 +30,7 @@ public class cacheMemory {
     }
 
     public int getCacheLocation() {
-        return cacheLocation;
+        return cacheLocation-1;
     }
 
     public void updateStatus(int pageRequest) {
