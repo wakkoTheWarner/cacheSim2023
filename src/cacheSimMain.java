@@ -16,9 +16,9 @@ public class cacheSimMain {
 
     public static void main (String[] args) {
         // Create instances of Processor, Cache, and MainMemory
-        cacheMemory cache = new cacheMemory();
-        mainMemory primaryMemory = new mainMemory();
-        processor cpuProcessor = new processor(cache, primaryMemory);
+        CacheMemory cache = new CacheMemory();
+        MainMemory primaryMemory = new MainMemory();
+        Processor cpuProcessor = new Processor(cache, primaryMemory);
 
         // Get user inputs: file name, cache access time, main memory access time, and replacement algorithm
         System.out.print("Ingrese el nombre del archivo con las peticiones de páginas: ");

@@ -1,11 +1,15 @@
-public class processor {
-    private final cacheMemory cache;
-    private final mainMemory primaryMemory;
+public class Processor {
+    private final CacheMemory cache;
+    private final MainMemory primaryMemory;
     private String result = "";
     private String systemStatus = "";
     private int timeAccumulator = 0;
+    private int cacheLocationNum = -1;
+    private String[] cachePageValue = {"  ","  ","  ","  "};
 
-    public processor(cacheMemory cache, mainMemory primaryMemory) {
+    //----------------//
+
+    public Processor(CacheMemory cache, MainMemory primaryMemory) {
         this.cache = cache;
         this.primaryMemory = primaryMemory;
     }
@@ -18,25 +22,38 @@ public class processor {
     }
 
     private void processRequest(int pageRequest) {
+        timeAccumulator += cache.getAccessTime();
         if (cache.contains(pageRequest)) {
             result = "Hit";
-            timeAccumulator += cache.getAccessTime();
             systemStatus = "No sustitución";
             // cache.updateStatus(pageRequest);
         } else {
             result = "Miss";
-            timeAccumulator += cache.getAccessTime();
-            int pageData = primaryMemory.fetchPage(pageRequest);
             timeAccumulator += primaryMemory.getAccessTime();
-            cache.storePage(pageData);
-            systemStatus = "Escribir en página " + String.format("%02d",cache.getCacheLocation());
+            cache.storePage(primaryMemory.fetchPage(pageRequest));
+            cacheLocationNum = cache.getCacheLocation(pageRequest);
+            systemStatus = "Escribir en página " + String.format("%02d",cacheLocationNum);
         }
 
         displaySystemState(pageRequest);
     }
 
     private void displaySystemState(int pageRequest) {
-        int width = 22; // Set the desired width here
+        int width = 22;
+        char[] cacheSelection = {' ',' ',' ',' '};
+        int cacheLocationNumHold = cacheLocationNum;
+
+        if (result.isEmpty()) {
+            cacheSelection[0] = '*';
+        } else {
+            if (cacheLocationNumHold == 3) {
+                cacheLocationNumHold = -1;
+            }
+            cacheSelection[cacheLocationNumHold + 1] = '*';
+            if (result.contains("Miss")) {
+                cachePageValue[cacheLocationNum] = String.format("%02d",cache.getCacheValue(pageRequest));
+            }
+        }
 
         System.out.println("");
         System.out.printf("%-" + width + "s: %s%n", "Tiempo acceso cache", cache.getAccessTime() + " nano segundos");

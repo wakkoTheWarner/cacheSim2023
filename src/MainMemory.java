@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-
-public class mainMemory {
+public class MainMemory {
     private int accessTime;
     //private Map<Integer, Integer> pages = new HashMap<>();
     private int[] pages = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
