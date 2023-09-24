@@ -1,7 +1,9 @@
 /*
  * CacheSim2023
- * Build v1.0.0
+ * Build v7.0.0
  * by Eduardo A. Sosa Torres
+ *    Javier J. Santos Babilonia
+ *    Azkaria L. Rosado Rodriguqez
  * Equipo #7
  */
 
