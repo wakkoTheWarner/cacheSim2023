@@ -26,7 +26,7 @@ public class cacheSimMain {
         String fileName = scanner.nextLine();
 
         // Solicita al usuario que ingrese el nombre del archivo que contiene las solicitudes de página
-        File file = new File(".\\" + fileName + ".txt");
+        File file = new File("..\\" + fileName + ".txt");
 
         // Solicita al usuario que ingrese el tiempo de acceso a la caché en nano segundos
         System.out.print("Ingrese el tiempo de acceso para el cache (en nano segundos): ");
