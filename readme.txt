@@ -41,7 +41,7 @@ Después de introducir los parámetros requeridos, comenzará la simulación. El
 - Tiempo acceso cache/main: Tiempo de acceso a la caché/memoria principal.
 - Algoritmo reemplazo: Algoritmo de reemplazo de caché.
 - Se requiere la página: Página que se solicita.
-- Resultado: Resultado de la solicitud (Acierto/Fallo).
+- Resultado: Resultado de la solicitud (Hit/Miss).
 - Tiempo transcurrido: Tiempo de acceso acumulado.
 - Estado del sistema: Estado del sistema mostrando el reemplazo de página o no reemplazo.
 
