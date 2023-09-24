@@ -39,7 +39,7 @@ public class cacheSimMain {
 
         scanner.nextLine();  // consume la nueva línea sobrante de entradas anteriores
 
-        // Solicitar al usuario que ingrese el algoritmo de reemplazo (actualmente, solo es válido 'Round Robin')
+        // Solicitar al usuario que ingrese el algoritmo de reemplazo
         System.out.print("Ingrese el algoritmo de reemplazo: ");
         String replacementAlgorithm = scanner.nextLine();
 
